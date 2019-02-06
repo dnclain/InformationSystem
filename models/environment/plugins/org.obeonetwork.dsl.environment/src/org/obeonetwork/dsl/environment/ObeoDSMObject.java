@@ -32,6 +32,7 @@ import org.obeonetwork.dsl.technicalid.Identifiable;
  *   <li>{@link org.obeonetwork.dsl.environment.ObeoDSMObject#getVersion <em>Version</em>}</li>
  *   <li>{@link org.obeonetwork.dsl.environment.ObeoDSMObject#getCreatedOn <em>Created On</em>}</li>
  *   <li>{@link org.obeonetwork.dsl.environment.ObeoDSMObject#getModifiedOn <em>Modified On</em>}</li>
+ *   <li>{@link org.obeonetwork.dsl.environment.ObeoDSMObject#getEnvironments <em>Environments</em>}</li>
  * </ul>
  *
  * @see org.obeonetwork.dsl.environment.EnvironmentPackage#getObeoDSMObject()
@@ -248,5 +249,21 @@ public interface ObeoDSMObject extends Identifiable {
 	 * @generated
 	 */
 	void setModifiedOn(Date value);
+
+	/**
+	 * Returns the value of the '<em><b>Environments</b></em>' reference list.
+	 * The list contents are of type {@link org.obeonetwork.dsl.environment.Environment}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Environments</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Environments</em>' reference list.
+	 * @see org.obeonetwork.dsl.environment.EnvironmentPackage#getObeoDSMObject_Environments()
+	 * @model
+	 * @generated
+	 */
+	EList<Environment> getEnvironments();
 
 } // ObeoDSMObject

@@ -164,13 +164,22 @@ public interface EnvironmentPackage extends EPackage {
 	int OBEO_DSM_OBJECT__MODIFIED_ON = TechnicalIDPackage.IDENTIFIABLE_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBEO_DSM_OBJECT__ENVIRONMENTS = TechnicalIDPackage.IDENTIFIABLE_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Obeo DSM Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OBEO_DSM_OBJECT_FEATURE_COUNT = TechnicalIDPackage.IDENTIFIABLE_FEATURE_COUNT + 8;
+	int OBEO_DSM_OBJECT_FEATURE_COUNT = TechnicalIDPackage.IDENTIFIABLE_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.obeonetwork.dsl.environment.impl.EnvironmentImpl <em>Environment</em>}' class.
@@ -262,6 +271,15 @@ public interface EnvironmentPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENVIRONMENT__MODIFIED_ON = OBEO_DSM_OBJECT__MODIFIED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENVIRONMENT__ENVIRONMENTS = OBEO_DSM_OBJECT__ENVIRONMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Namespaces</b></em>' containment reference list.
@@ -418,6 +436,15 @@ public interface EnvironmentPackage extends EPackage {
 	int TYPE__MODIFIED_ON = OBEO_DSM_OBJECT__MODIFIED_ON;
 
 	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE__ENVIRONMENTS = OBEO_DSM_OBJECT__ENVIRONMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -534,6 +561,15 @@ public interface EnvironmentPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_TYPE__MODIFIED_ON = TYPE__MODIFIED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE__ENVIRONMENTS = TYPE__ENVIRONMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -654,6 +690,15 @@ public interface EnvironmentPackage extends EPackage {
 	int PRIMITIVE_TYPE__MODIFIED_ON = DATA_TYPE__MODIFIED_ON;
 
 	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE__ENVIRONMENTS = DATA_TYPE__ENVIRONMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -770,6 +815,15 @@ public interface EnvironmentPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENUMERATION__MODIFIED_ON = DATA_TYPE__MODIFIED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION__ENVIRONMENTS = DATA_TYPE__ENVIRONMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -899,6 +953,15 @@ public interface EnvironmentPackage extends EPackage {
 	int LITERAL__MODIFIED_ON = OBEO_DSM_OBJECT__MODIFIED_ON;
 
 	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL__ENVIRONMENTS = OBEO_DSM_OBJECT__ENVIRONMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1008,6 +1071,15 @@ public interface EnvironmentPackage extends EPackage {
 	int ACTION__MODIFIED_ON = OBEO_DSM_OBJECT__MODIFIED_ON;
 
 	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION__ENVIRONMENTS = OBEO_DSM_OBJECT__ENVIRONMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1115,6 +1187,15 @@ public interface EnvironmentPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTER_DSM_LINK__MODIFIED_ON = OBEO_DSM_OBJECT__MODIFIED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_DSM_LINK__ENVIRONMENTS = OBEO_DSM_OBJECT__ENVIRONMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1346,6 +1427,15 @@ public interface EnvironmentPackage extends EPackage {
 	int PRIORITY_DEFINITION__MODIFIED_ON = OBEO_DSM_OBJECT__MODIFIED_ON;
 
 	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIORITY_DEFINITION__ENVIRONMENTS = OBEO_DSM_OBJECT__ENVIRONMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Priorities</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1453,6 +1543,15 @@ public interface EnvironmentPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRIORITY__MODIFIED_ON = OBEO_DSM_OBJECT__MODIFIED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIORITY__ENVIRONMENTS = OBEO_DSM_OBJECT__ENVIRONMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1564,6 +1663,15 @@ public interface EnvironmentPackage extends EPackage {
 	int TYPES_DEFINITION__MODIFIED_ON = OBEO_DSM_OBJECT__MODIFIED_ON;
 
 	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPES_DEFINITION__ENVIRONMENTS = OBEO_DSM_OBJECT__ENVIRONMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Types</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1673,6 +1781,15 @@ public interface EnvironmentPackage extends EPackage {
 	int BEHAVIOUR__MODIFIED_ON = OBEO_DSM_OBJECT__MODIFIED_ON;
 
 	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOUR__ENVIRONMENTS = OBEO_DSM_OBJECT__ENVIRONMENTS;
+
+	/**
 	 * The number of structural features of the '<em>Behaviour</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1771,6 +1888,15 @@ public interface EnvironmentPackage extends EPackage {
 	 * @ordered
 	 */
 	int STRUCTURED_TYPE__MODIFIED_ON = TYPE__MODIFIED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_TYPE__ENVIRONMENTS = TYPE__ENVIRONMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1952,6 +2078,15 @@ public interface EnvironmentPackage extends EPackage {
 	 * @ordered
 	 */
 	int DTO__MODIFIED_ON = STRUCTURED_TYPE__MODIFIED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DTO__ENVIRONMENTS = STRUCTURED_TYPE__ENVIRONMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2144,6 +2279,15 @@ public interface EnvironmentPackage extends EPackage {
 	int FILTER_CONTAINER__MODIFIED_ON = OBEO_DSM_OBJECT__MODIFIED_ON;
 
 	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILTER_CONTAINER__ENVIRONMENTS = OBEO_DSM_OBJECT__ENVIRONMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Owned Filters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2253,6 +2397,15 @@ public interface EnvironmentPackage extends EPackage {
 	int FILTER__MODIFIED_ON = OBEO_DSM_OBJECT__MODIFIED_ON;
 
 	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILTER__ENVIRONMENTS = OBEO_DSM_OBJECT__ENVIRONMENTS;
+
+	/**
 	 * The number of structural features of the '<em>Filter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2351,6 +2504,15 @@ public interface EnvironmentPackage extends EPackage {
 	 * @ordered
 	 */
 	int NAMESPACE__MODIFIED_ON = TYPES_DEFINITION__MODIFIED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMESPACE__ENVIRONMENTS = TYPES_DEFINITION__ENVIRONMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Types</b></em>' containment reference list.
@@ -2489,6 +2651,15 @@ public interface EnvironmentPackage extends EPackage {
 	int PROPERTY__MODIFIED_ON = OBEO_DSM_OBJECT__MODIFIED_ON;
 
 	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__ENVIRONMENTS = OBEO_DSM_OBJECT__ENVIRONMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2614,6 +2785,15 @@ public interface EnvironmentPackage extends EPackage {
 	 * @ordered
 	 */
 	int ATTRIBUTE__MODIFIED_ON = PROPERTY__MODIFIED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE__ENVIRONMENTS = PROPERTY__ENVIRONMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2759,6 +2939,15 @@ public interface EnvironmentPackage extends EPackage {
 	 * @ordered
 	 */
 	int REFERENCE__MODIFIED_ON = PROPERTY__MODIFIED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE__ENVIRONMENTS = PROPERTY__ENVIRONMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2933,6 +3122,15 @@ public interface EnvironmentPackage extends EPackage {
 	int BINDING_INFO__MODIFIED_ON = OBEO_DSM_OBJECT__MODIFIED_ON;
 
 	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINDING_INFO__ENVIRONMENTS = OBEO_DSM_OBJECT__ENVIRONMENTS;
+
+	/**
 	 * The feature id for the '<em><b>References</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3087,6 +3285,15 @@ public interface EnvironmentPackage extends EPackage {
 	int BINDING_REFERENCE__MODIFIED_ON = OBEO_DSM_OBJECT__MODIFIED_ON;
 
 	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINDING_REFERENCE__ENVIRONMENTS = OBEO_DSM_OBJECT__ENVIRONMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Left</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3203,6 +3410,15 @@ public interface EnvironmentPackage extends EPackage {
 	 * @ordered
 	 */
 	int BINDING_ELEMENT__MODIFIED_ON = OBEO_DSM_OBJECT__MODIFIED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINDING_ELEMENT__ENVIRONMENTS = OBEO_DSM_OBJECT__ENVIRONMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Bound Element</b></em>' reference.
@@ -3357,6 +3573,15 @@ public interface EnvironmentPackage extends EPackage {
 	 * @ordered
 	 */
 	int BINDING_REGISTRY__MODIFIED_ON = OBEO_DSM_OBJECT__MODIFIED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Environments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINDING_REGISTRY__ENVIRONMENTS = OBEO_DSM_OBJECT__ENVIRONMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Binding Infos</b></em>' containment reference list.
@@ -3750,6 +3975,17 @@ public interface EnvironmentPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getObeoDSMObject_ModifiedOn();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.obeonetwork.dsl.environment.ObeoDSMObject#getEnvironments <em>Environments</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Environments</em>'.
+	 * @see org.obeonetwork.dsl.environment.ObeoDSMObject#getEnvironments()
+	 * @see #getObeoDSMObject()
+	 * @generated
+	 */
+	EReference getObeoDSMObject_Environments();
 
 	/**
 	 * Returns the meta object for class '{@link org.obeonetwork.dsl.environment.MetaDataContainer <em>Meta Data Container</em>}'.
@@ -4715,6 +4951,14 @@ public interface EnvironmentPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute OBEO_DSM_OBJECT__MODIFIED_ON = eINSTANCE.getObeoDSMObject_ModifiedOn();
+
+		/**
+		 * The meta object literal for the '<em><b>Environments</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OBEO_DSM_OBJECT__ENVIRONMENTS = eINSTANCE.getObeoDSMObject_Environments();
 
 		/**
 		 * The meta object literal for the '{@link org.obeonetwork.dsl.environment.impl.MetaDataContainerImpl <em>Meta Data Container</em>}' class.

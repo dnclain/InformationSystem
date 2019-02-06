@@ -310,7 +310,7 @@ public class EnvironmentPackageImpl extends EPackageImpl implements EnvironmentP
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link EnvironmentPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -325,9 +325,10 @@ public class EnvironmentPackageImpl extends EPackageImpl implements EnvironmentP
 			return (EnvironmentPackage) EPackage.Registry.INSTANCE.getEPackage(EnvironmentPackage.eNS_URI);
 
 		// Obtain or create and register package
-		EnvironmentPackageImpl theEnvironmentPackage = (EnvironmentPackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof EnvironmentPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-						: new EnvironmentPackageImpl());
+		Object registeredEnvironmentPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		EnvironmentPackageImpl theEnvironmentPackage = registeredEnvironmentPackage instanceof EnvironmentPackageImpl
+				? (EnvironmentPackageImpl) registeredEnvironmentPackage
+				: new EnvironmentPackageImpl();
 
 		isInited = true;
 
@@ -598,6 +599,15 @@ public class EnvironmentPackageImpl extends EPackageImpl implements EnvironmentP
 	 */
 	public EAttribute getObeoDSMObject_ModifiedOn() {
 		return (EAttribute) obeoDSMObjectEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getObeoDSMObject_Environments() {
+		return (EReference) obeoDSMObjectEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -1258,6 +1268,7 @@ public class EnvironmentPackageImpl extends EPackageImpl implements EnvironmentP
 		createEAttribute(obeoDSMObjectEClass, OBEO_DSM_OBJECT__VERSION);
 		createEAttribute(obeoDSMObjectEClass, OBEO_DSM_OBJECT__CREATED_ON);
 		createEAttribute(obeoDSMObjectEClass, OBEO_DSM_OBJECT__MODIFIED_ON);
+		createEReference(obeoDSMObjectEClass, OBEO_DSM_OBJECT__ENVIRONMENTS);
 
 		metaDataContainerEClass = createEClass(META_DATA_CONTAINER);
 		createEReference(metaDataContainerEClass, META_DATA_CONTAINER__METADATAS);
@@ -1493,6 +1504,9 @@ public class EnvironmentPackageImpl extends EPackageImpl implements EnvironmentP
 		initEAttribute(getObeoDSMObject_ModifiedOn(), ecorePackage.getEDate(), "modifiedOn", null, 0, 1,
 				ObeoDSMObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+		initEReference(getObeoDSMObject_Environments(), this.getEnvironment(), null, "environments", null, 0, -1,
+				ObeoDSMObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(metaDataContainerEClass, MetaDataContainer.class, "MetaDataContainer", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

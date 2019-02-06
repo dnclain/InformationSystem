@@ -68,6 +68,7 @@ public class ObeoDSMObjectItemProvider extends IdentifiableItemProvider {
 			addVersionPropertyDescriptor(object);
 			addCreatedOnPropertyDescriptor(object);
 			addModifiedOnPropertyDescriptor(object);
+			addEnvironmentsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -168,6 +169,22 @@ public class ObeoDSMObjectItemProvider extends IdentifiableItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Environments feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEnvironmentsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_ObeoDSMObject_environments_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_ObeoDSMObject_environments_feature",
+								"_UI_ObeoDSMObject_type"),
+						EnvironmentPackage.Literals.OBEO_DSM_OBJECT__ENVIRONMENTS, true, false, true, null, null,
+						null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -216,7 +233,7 @@ public class ObeoDSMObjectItemProvider extends IdentifiableItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = crop(((ObeoDSMObject) object).getDescription());
+		String label = ((ObeoDSMObject) object).getTechnicalid();
 		return label == null || label.length() == 0 ? getString("_UI_ObeoDSMObject_type")
 				: getString("_UI_ObeoDSMObject_type") + " " + label;
 	}

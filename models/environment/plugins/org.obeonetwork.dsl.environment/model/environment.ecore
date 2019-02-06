@@ -80,6 +80,8 @@
         <details key="documentation" value="The modification date of this obect."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="environments" upperBound="-1"
+        eType="#//Environment"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MetaDataContainer" eSuperTypes="../../org.obeonetwork.dsl.technicalid/model/technicalid.ecore#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="metadatas" upperBound="-1"

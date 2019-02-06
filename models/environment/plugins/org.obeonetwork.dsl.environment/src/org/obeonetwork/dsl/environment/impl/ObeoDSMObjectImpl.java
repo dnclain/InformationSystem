@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.obeonetwork.dsl.environment.Behaviour;
 import org.obeonetwork.dsl.environment.BindingRegistry;
+import org.obeonetwork.dsl.environment.Environment;
 import org.obeonetwork.dsl.environment.EnvironmentPackage;
 import org.obeonetwork.dsl.environment.MetaDataContainer;
 import org.obeonetwork.dsl.environment.ObeoDSMObject;
@@ -45,6 +46,7 @@ import org.obeonetwork.dsl.technicalid.impl.IdentifiableImpl;
  *   <li>{@link org.obeonetwork.dsl.environment.impl.ObeoDSMObjectImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link org.obeonetwork.dsl.environment.impl.ObeoDSMObjectImpl#getCreatedOn <em>Created On</em>}</li>
  *   <li>{@link org.obeonetwork.dsl.environment.impl.ObeoDSMObjectImpl#getModifiedOn <em>Modified On</em>}</li>
+ *   <li>{@link org.obeonetwork.dsl.environment.impl.ObeoDSMObjectImpl#getEnvironments <em>Environments</em>}</li>
  * </ul>
  *
  * @generated
@@ -326,6 +328,17 @@ public abstract class ObeoDSMObjectImpl extends IdentifiableImpl implements Obeo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	public EList<Environment> getEnvironments() {
+		return (EList<Environment>) eDynamicGet(EnvironmentPackage.OBEO_DSM_OBJECT__ENVIRONMENTS,
+				EnvironmentPackage.Literals.OBEO_DSM_OBJECT__ENVIRONMENTS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -363,6 +376,8 @@ public abstract class ObeoDSMObjectImpl extends IdentifiableImpl implements Obeo
 			return getCreatedOn();
 		case EnvironmentPackage.OBEO_DSM_OBJECT__MODIFIED_ON:
 			return getModifiedOn();
+		case EnvironmentPackage.OBEO_DSM_OBJECT__ENVIRONMENTS:
+			return getEnvironments();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -403,6 +418,10 @@ public abstract class ObeoDSMObjectImpl extends IdentifiableImpl implements Obeo
 		case EnvironmentPackage.OBEO_DSM_OBJECT__MODIFIED_ON:
 			setModifiedOn((Date) newValue);
 			return;
+		case EnvironmentPackage.OBEO_DSM_OBJECT__ENVIRONMENTS:
+			getEnvironments().clear();
+			getEnvironments().addAll((Collection<? extends Environment>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -439,6 +458,9 @@ public abstract class ObeoDSMObjectImpl extends IdentifiableImpl implements Obeo
 		case EnvironmentPackage.OBEO_DSM_OBJECT__MODIFIED_ON:
 			setModifiedOn(MODIFIED_ON_EDEFAULT);
 			return;
+		case EnvironmentPackage.OBEO_DSM_OBJECT__ENVIRONMENTS:
+			getEnvironments().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -469,6 +491,8 @@ public abstract class ObeoDSMObjectImpl extends IdentifiableImpl implements Obeo
 		case EnvironmentPackage.OBEO_DSM_OBJECT__MODIFIED_ON:
 			return MODIFIED_ON_EDEFAULT == null ? getModifiedOn() != null
 					: !MODIFIED_ON_EDEFAULT.equals(getModifiedOn());
+		case EnvironmentPackage.OBEO_DSM_OBJECT__ENVIRONMENTS:
+			return !getEnvironments().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
