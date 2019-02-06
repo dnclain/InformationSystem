@@ -53,5 +53,17 @@
 	<extension point="org.obeonetwork.dsl.overview.overviewModelDef">
 		<overviewModelDef class="org.obeonetwork.dsl.is.overview.IsOverviewModelDef"/>
 	</extension>
+    
+    <extension point = "org.eclipse.ui.newWizards">
+    	<wizard
+           category="org.obeonetwork.dsl.is.ui.categoryID"
+           class="org.obeonetwork.dsl.is.ui.wizards.NewEntityModelWizard"
+           hasPages="true"
+           icon="icons/full/obj16/ISModelFile.png"
+           id="org.obeonetwork.dsl.is.ui.wizards.NewEntityModelWizard"
+           name="Entity Model">
+			<description>New entity model wizard</description>ion>
+		</wizard>
+	</extension>
       
 </plugin>
