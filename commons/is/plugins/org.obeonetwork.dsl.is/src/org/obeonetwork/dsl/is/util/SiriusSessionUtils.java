@@ -9,10 +9,8 @@ import java.util.Map;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
@@ -27,16 +25,18 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.business.api.query.AirDResouceQuery;
+import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-
-import fr.obeo.dsl.viewpoint.collab.api.CDORepositoryManagerRegistry;
-import fr.obeo.dsl.viewpoint.collab.api.RepositoryConnectionException;
 
 public class SiriusSessionUtils {
 
@@ -77,13 +77,24 @@ public class SiriusSessionUtils {
 		return folders;
 	}
 	
+	/**
+	 * Checks if a session is a shared project by checking whether the main analysis is a CDO resource or not
+	 * @param session
+	 * @return
+	 */
 	static public boolean isSharedModelingProjectSession(Session session) {
-		try {
-			if (CDORepositoryManagerRegistry.getRepositoryManager(session) != null) {
+		for (Resource sessionResource : session.getAllSessionResources()) {
+			if (isRemoteResource(sessionResource)) {
 				return true;
 			}
-		} catch (RepositoryConnectionException e) {
-			// Not a shared project
+		}
+		return false;
+	}
+	
+	static public boolean isRemoteResource(Resource resource) {
+		if (resource != null) {
+			URI uri = resource.getURI();
+			return uri != null && new URIQuery(uri).isCDOURI();
 		}
 		return false;
 	}

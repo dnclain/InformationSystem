@@ -7,13 +7,16 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.cdo.eresource.CDOResource;
 import org.eclipse.emf.cdo.eresource.CDOResourceFolder;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.swt.widgets.Shell;
 import org.obeonetwork.dsl.is.util.SiriusSessionUtils;
 
@@ -59,35 +62,50 @@ public class ProjectsAndFoldersContentProvider implements ITreeContentProvider {
                 }
             }
             return accessibleProjects.toArray();
-        } else if (element instanceof IContainer) {
-        	IContainer container = (IContainer) element;
-            if (container.isAccessible()) {
+        } else if (element instanceof IFolder) {
+        	IFolder folder = (IFolder)element;
+        	if (folder.isAccessible()) {
             	List<Object> children = new ArrayList<>();
             	// Local folders
-            	try {
-					for (IResource member : container.members()) {
-                        if (member.getType() != IResource.FILE) {
-                            children.add(member);
-                        }
-                    }
-                } catch (CoreException e) {
-                    // this should never happen because we call #isAccessible before invoking #members
-                }
-            	// CDO Folders
-            	if (container instanceof IProject) {
-            		IProject project = (IProject)container;
-            		
-            		// Load project if required
+            	children.addAll(getFolders(folder));
+            	
+            	return children.stream().distinct().sorted(new Comparator<Object>() {
+        			@Override
+        			public int compare(Object o1, Object o2) {
+        				String l1 = labelProvider.getText(o1);
+        				String l2 = labelProvider.getText(o2);
+        				return l1.compareTo(l2);
+        			}
+        		}).toArray();
+            }
+        } else if (element instanceof IProject) {
+        	IProject project = (IProject) element;
+            if (project.isAccessible()) {
+            	List<Object> children = new ArrayList<>();
+            	
+            	// Check if modeling project
+            	if (ModelingProject.hasModelingProjectNature(project)) {
+            		// Modeling project, we have to make sure the project is loaded
             		boolean loaded = SiriusSessionUtils.loadModelingProject(project, true, getShell());
-            		
             		if (loaded) {
-            			List<CDOResourceFolder> cdoFolders = SiriusSessionUtils.getFoldersForModelingProject(project);
-            			// Put in cache
-            			for (CDOResourceFolder cdoFolder : cdoFolders) {
-            				cacheFoldersProject.put(cdoFolder, project);
+            			Session session = SiriusSessionUtils.getSession(project);
+            			if (SiriusSessionUtils.isSharedModelingProjectSession(session)) {
+            				// CDO Folders
+            				List<CDOResourceFolder> cdoFolders = SiriusSessionUtils.getFoldersForModelingProject(project);
+                			// Put in cache
+                			for (CDOResourceFolder cdoFolder : cdoFolders) {
+                				cacheFoldersProject.put(cdoFolder, project);
+                			}
+                			children.addAll(cdoFolders);		
+            			} else {
+                        	// Local folders
+                        	children.addAll(getFolders(project));            				
             			}
-            			children.addAll(cdoFolders);            			
             		}
+            	} else {
+            		// Non modeling projects
+                	// Local folders
+                	children.addAll(getFolders(project));            		
             	}
             	
             	return children.stream().distinct().sorted(new Comparator<Object>() {
@@ -104,6 +122,20 @@ public class ProjectsAndFoldersContentProvider implements ITreeContentProvider {
 			return folder.getNodes().stream().filter(CDOResourceFolder.class::isInstance).toArray();
         }
         return new Object[0];
+	}
+	
+	private List<IFolder> getFolders(IContainer container) {
+		List<IFolder> folders = new ArrayList<>();
+		try {
+			for (IResource member : container.members()) {
+                if (member instanceof IFolder) {
+                	folders.add((IFolder)member);
+                }
+            }
+        } catch (CoreException e) {
+            // this should never happen because we call #isAccessible before invoking #members
+        }
+		return folders;
 	}
 	
 	@Override
@@ -139,7 +171,17 @@ public class ProjectsAndFoldersContentProvider implements ITreeContentProvider {
 			if (project != null) {
 				return project;
 			} else {
-				return folder.getFolder();				
+				return folder.getFolder();
+			}
+		}else if (element instanceof CDOResource) {
+			// Check in cache if the parent folder is directly contained by a project
+			CDOResource resource = (CDOResource) element;
+			CDOResourceFolder folder = resource.getFolder();
+			IProject project = cacheFoldersProject.get(folder);
+			if (project != null) {
+				return project;
+			} else {
+				return folder;
 			}
 		}
         return null;
@@ -149,6 +191,7 @@ public class ProjectsAndFoldersContentProvider implements ITreeContentProvider {
 	public boolean hasChildren(Object element) {
 		if (element instanceof IProject) {
 			if (SiriusSessionUtils.getSession((IProject)element) == null) {
+				// Project not yet loaded
 				return true;
 			}
 		}

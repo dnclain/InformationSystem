@@ -15,6 +15,9 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.cdo.eresource.CDOResource;
 import org.eclipse.emf.cdo.eresource.CDOResourceFolder;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -316,32 +319,52 @@ public class NewModelCreationPage extends WizardPage {
 	}
 	
 	private void initSelection() {
-		setTreeSelection(selection.getFirstElement());
+		if (selection != null) {
+			setTreeSelection(selection.getFirstElement());
+		}
 	}
 	
 	private void setTreeSelection(Object selectedElement) {
-		Object target = null;
-		
-		if (selectedElement instanceof IContainer) {
-			// Project or folder, the element can be automatically selected
-			target = selectedElement;
-		} else if (selectedElement instanceof CDOResourceFolder) {
-			target = selectedElement;
-		} else if (selectedElement instanceof ResourcesFolderItemImpl) {
-			// ResourcesFolderItemImpl we have to retrieve the corresponding CDOResourceFolder
-			target = getFolder((ResourcesFolderItemImpl)selectedElement);
-		} else if (selectedElement instanceof CDOResource) {
-			target = ((CDOResource) selectedElement).getFolder();
-		} else if (selectedElement instanceof IFile) {
-			target = ((IFile) selectedElement).getParent();
-		} else if (selectedElement instanceof ProjectDependenciesItemImpl) {
-			target = ((ProjectDependenciesItemImpl)selectedElement).getProject();
-		}
+		Object target = getElementToSelect(selectedElement);
 		
 		if (target != null) {
 			IStructuredSelection sel = new StructuredSelection(target);
 			treeViewer.setSelection(sel, true);
 		}
+	}
+	
+	private Object getElementToSelect(Object element) {
+		Object target = null;
+		
+		if (element instanceof IContainer) {
+			// Project or folder, the element can be automatically selected
+			target = element;
+		} else if (element instanceof CDOResourceFolder) {
+			target = element;
+		} else if (element instanceof ResourcesFolderItemImpl) {
+			// ResourcesFolderItemImpl we have to retrieve the corresponding CDOResourceFolder
+			target = getFolder((ResourcesFolderItemImpl)element);
+		} else if (element instanceof CDOResource) {
+			target = ((CDOResource) element).getFolder();
+		} else if (element instanceof IFile) {
+			target = ((IFile) element).getParent();
+		} else if (element instanceof ProjectDependenciesItemImpl) {
+			target = ((ProjectDependenciesItemImpl)element).getProject();
+		} else if (element instanceof EObject) {
+			target = getElementToSelect(((EObject) element).eResource());
+		} else if (element instanceof Resource) {
+			// Resource but not CDO Resource
+			// We have to get the corresponding IFile
+			URI uri = ((Resource)element).getURI();
+			if (uri.isPlatformResource()) {
+				String platformString = uri.toPlatformString(true);
+				IResource member = ResourcesPlugin.getWorkspace().getRoot().findMember(platformString);
+				if (member instanceof IFile) {
+					return getElementToSelect(member);
+				}
+			}
+		}
+		return target;
 	}
 	
 	private void initResourceName() {
@@ -438,4 +461,9 @@ public class NewModelCreationPage extends WizardPage {
 	public void setData(NewModelWizardData data) {
 		this.data = data;
 	}
+
+	public ProjectsAndFoldersContentProvider getContentProvider() {
+		return contentProvider;
+	}
+	
 }
