@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2019 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.obeonetwork.dsl.database.design.reference.custom;
 
 import java.util.Collection;
@@ -34,8 +44,7 @@ public class EEFReferenceCustomLifecycleManagerProvider implements IEEFLifecycle
 			String referenceName = this.getReferenceName(eefCustomReferenceDescription, interpreter, variableManager);
 			EReference reference = (EReference) target.eClass().getEStructuralFeature(referenceName);
 			if (reference.isMany()) {
-				// Not implemented yet!
-				throw new IllegalArgumentException();
+				return new EEFMultipleReferenceCustomLifecycleManager(eefCustomReferenceDescription, target, reference, variableManager, interpreter, editingContextAdapter);
 			} else {
 				return new EEFSingleReferenceCustomLifecycleManager(eefCustomReferenceDescription, target, reference, variableManager, interpreter, editingContextAdapter);
 			}
